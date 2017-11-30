@@ -9,7 +9,7 @@
     </parent>
     <artifactId>RedmineHelperConcentrator</artifactId>
     <groupId>com.yarregion.RedmineHelperConcentrator</groupId>
-    <packaging>war</packaging>
+    <packaging>jar</packaging>
     <name>RedmineHelperConcentrator</name>
     <description>Spring Boot Web JSP Sample</description>
     <version>1.0-SNAPSHOT</version>
