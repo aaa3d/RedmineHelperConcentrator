@@ -58,16 +58,18 @@ td {
         
         <table>
         <c:forEach items="${workers}" var="worker">     
+            <tr>
             <td class="${worker.status_class}">
                 ${worker.fio}
             </td>
+            </tr>
                 
                 <c:forEach items="${worker.last_issues}" var="issue">    
                     <tr>
                         <td>
                             <fmt:formatDate pattern = "yyyy-MM-dd HH:mm:ss" value = "${issue.last_timer_tm.getTime()}" />
                         </td>
-                        <td class="${issue.status_class}>
+                        <td class="${issue.status_class}">
                         ${issue.subject} 
                         </td>
                         <td>
