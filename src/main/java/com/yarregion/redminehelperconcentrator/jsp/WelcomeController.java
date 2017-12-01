@@ -56,6 +56,7 @@ public class WelcomeController {
                 
                 Session session = sessionFactory.openSession();
                 Criteria criteria = session.createCriteria(Worker.class);
+                criteria.addOrder(Order.asc("fio"));
                 List<Worker> workers =  criteria.list();
                 
                 for(Worker worker: workers){
@@ -117,7 +118,7 @@ public class WelcomeController {
             worker.last_ping_tm = Calendar.getInstance();
             worker.lock_status = lock_status;
             
-            if (issue_id==0){
+            if (issue_id!=0){
             Issue issue = (Issue) session.get(Issue.class, issue_id);
                 if (issue == null)
                     issue = new Issue();
