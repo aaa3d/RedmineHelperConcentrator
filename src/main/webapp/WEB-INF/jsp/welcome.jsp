@@ -69,6 +69,11 @@ td {
                         <td>
                             <fmt:formatDate pattern = "yyyy-MM-dd HH:mm:ss" value = "${issue.last_timer_tm.getTime()}" />
                         </td>
+                        
+                        </td>
+                        <td>
+                            <a href="http://redmine/redmine/issues/ ${issue.id}"> ${issue.id}</a> 
+                        </td>
                         <td class="${issue.status_class}">
                         ${issue.subject} 
                         </td>
