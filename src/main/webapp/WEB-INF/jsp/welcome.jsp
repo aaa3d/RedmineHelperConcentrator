@@ -18,6 +18,36 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
     </head>
+    
+    
+    <style>
+td {
+   border: 1px #d0d0d0 dashed;
+}
+
+    .status_online {
+        background: #ffff00;
+    }
+    .status_offline {
+        background: #d0d0d0;
+    }
+    .status_locked {
+        background: #d0f0d0;
+    }
+    .status_active {
+        background: #ffffff;
+    }
+    .status_inactive {
+        background: #d0d0d0;
+    }
+    
+    
+
+
+
+</style>
+    
+    
    <body>
         
 	<c:url value="/resources/text.txt" var="url"/>
@@ -28,7 +58,7 @@
         
         <table>
         <c:forEach items="${workers}" var="worker">     
-            <td>
+            <td class="${worker.status_class}">
                 ${worker.fio}
             </td>
                 
@@ -37,7 +67,7 @@
                         <td>
                             <fmt:formatDate pattern = "yyyy-MM-dd HH:mm:ss" value = "${issue.last_timer_tm.getTime()}" />
                         </td>
-                        <td>
+                        <td class="${issue.status_class}>
                         ${issue.subject} 
                         </td>
                         <td>

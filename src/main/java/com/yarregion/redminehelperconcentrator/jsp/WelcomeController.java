@@ -64,8 +64,23 @@ public class WelcomeController {
                    Criteria crit = session.createCriteria(Issue.class);
                    crit.add(Restrictions.ge("last_timer_tm", cal));
                    crit.add(Restrictions.eq("worker", worker));
+                   crit.add(Restrictions.not(Restrictions.eq("id", 0)));
                    crit.addOrder( Order.desc("last_timer_tm"));
                    worker.last_issues = crit.list();
+                   
+                   
+                   
+                   Calendar timeout_date = Calendar.getInstance();
+                   timeout_date.add(Calendar.MINUTE, -5);
+                   if (worker.last_ping_tm.after(timeout_date)){
+                       worker.setStatus_class("status_online");
+                       if(worker.getLock_status()==0)
+                           worker.setStatus_class("status_locked");
+                   }
+                   else
+                       worker.setStatus_class("status_offline");
+                   
+                   
                 }
                 
                 //вывести страницу с текищими задачами

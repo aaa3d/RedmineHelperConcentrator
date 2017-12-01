@@ -45,6 +45,10 @@ public class Worker {
     @Transient
     public List<Issue> last_issues;
     
+    @Getter @Setter
+    @Transient
+    public String status_class;
+    
     
     
     
