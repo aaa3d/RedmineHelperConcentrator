@@ -31,6 +31,10 @@ public class Worker {
     String fio;
     
     @Getter @Setter
+    int lock_status;
+    
+    
+    @Getter @Setter
     Calendar last_ping_tm;
     
     @Getter @Setter

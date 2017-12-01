@@ -36,6 +36,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
@@ -80,7 +81,13 @@ public class WelcomeController {
 
 
         @RequestMapping("updateData")
-        public @ResponseBody String updateData(String login, String fio, int issue_id, String issue_subject, double issue_timer_value){
+        public @ResponseBody String updateData(
+                @RequestParam(value = "login", required=true) String login, 
+                @RequestParam(value = "fio", required=true) String fio, 
+                @RequestParam(value = "issue_id", required=false) Integer issue_id, 
+                @RequestParam(value = "issue_subject", required=false) String issue_subject, 
+                @RequestParam(value = "issue_timer_value", required=false) double issue_timer_value, 
+                @RequestParam(value = "lock_status", required=true) Integer lock_status){
             
             Session session = sessionFactory.openSession();
             Worker worker = (Worker) session.get(Worker.class, login);
@@ -88,24 +95,28 @@ public class WelcomeController {
                 worker = new Worker();
             
             
-            Issue issue = (Issue) session.get(Issue.class, issue_id);
-            if (issue == null)
-                issue = new Issue();
+            
             
             worker.login = login;
             worker.fio = fio;
             worker.last_ping_tm = Calendar.getInstance();
+            worker.lock_status = lock_status;
             
-            issue.id = issue_id;
-            issue.subject = issue_subject;
-            issue.timer_value = issue_timer_value;
-            issue.worker = worker;
-            issue.last_timer_tm = Calendar.getInstance();
+            if (issue_id!=null){
+            Issue issue = (Issue) session.get(Issue.class, issue_id);
+                if (issue == null)
+                    issue = new Issue();
+                issue.id = issue_id;
+                issue.subject = issue_subject;
+                issue.timer_value = issue_timer_value;
+                issue.worker = worker;
+                issue.last_timer_tm = Calendar.getInstance();
+                session.save(issue);
+            }
             
-            //session.sa(worker);
-            //session.persist(issue);
+
             session.save(worker);
-            session.save(issue);
+            
             
             session.flush();
             session.close();
