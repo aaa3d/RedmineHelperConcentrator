@@ -31,7 +31,7 @@ public class Worker {
     String fio;
     
     @Getter @Setter
-    int lock_status;
+    int lock_status=0;
     
     
     @Getter @Setter
