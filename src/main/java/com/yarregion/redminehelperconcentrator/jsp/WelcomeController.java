@@ -84,9 +84,9 @@ public class WelcomeController {
         public @ResponseBody String updateData(
                 @RequestParam(value = "login", required=true) String login, 
                 @RequestParam(value = "fio", required=true) String fio, 
-                @RequestParam(value = "issue_id", required=false) Integer issue_id, 
-                @RequestParam(value = "issue_subject", required=false) String issue_subject, 
-                @RequestParam(value = "issue_timer_value", required=false) double issue_timer_value, 
+                @RequestParam(value = "issue_id", required=false, defaultValue="0") Integer issue_id, 
+                @RequestParam(value = "issue_subject", required=false, defaultValue="") String issue_subject, 
+                @RequestParam(value = "issue_timer_value", required=false, defaultValue="0") double issue_timer_value, 
                 @RequestParam(value = "lock_status", required=true) Integer lock_status){
             
             Session session = sessionFactory.openSession();
@@ -102,7 +102,7 @@ public class WelcomeController {
             worker.last_ping_tm = Calendar.getInstance();
             worker.lock_status = lock_status;
             
-            if (issue_id!=null){
+            if (issue_id==0){
             Issue issue = (Issue) session.get(Issue.class, issue_id);
                 if (issue == null)
                     issue = new Issue();
