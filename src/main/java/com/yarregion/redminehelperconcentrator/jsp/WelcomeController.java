@@ -75,7 +75,7 @@ public class WelcomeController {
                    timeout_date.add(Calendar.MINUTE, -5);
                    if (worker.last_ping_tm.after(timeout_date)){
                        worker.setStatus_class("status_online");
-                       if(worker.getLock_status()==0)
+                       if(worker.getLock_status()==1)
                            worker.setStatus_class("status_locked");
                    }
                    else
