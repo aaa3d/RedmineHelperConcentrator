@@ -26,13 +26,13 @@ td {
 }
 
     .status_online {
-        background: #ffff00;
+        background: #ffffff;
     }
     .status_offline {
         background: #d0d0d0;
     }
     .status_locked {
-        background: #d0f0d0;
+        background: #f0d0d0;
     }
     .status_active {
         background: #ffffff;
