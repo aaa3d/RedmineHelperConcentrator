@@ -8,6 +8,7 @@ package com.yarregion.redminehelperconcentrator.jsp;
 import java.util.Calendar;
 import java.util.Date;
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -42,6 +43,7 @@ public class Issue {
             Calendar last_timer_tm;
             
             @Getter @Setter
+            @Column(nullable=true)
             int in_work=0;
             
             public String timer_value_readable(){
