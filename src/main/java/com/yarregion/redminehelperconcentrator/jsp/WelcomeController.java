@@ -127,6 +127,7 @@ public class WelcomeController {
                 issue.subject = issue_subject;
                 issue.timer_value = issue_timer_value;
                 issue.worker = worker;
+                issue.in_work = issue_in_work;
                 issue.last_timer_tm = Calendar.getInstance();
                 session.save(issue);
             }
