@@ -101,6 +101,7 @@ public class WelcomeController {
                 @RequestParam(value = "login", required=true) String login, 
                 @RequestParam(value = "fio", required=true) String fio, 
                 @RequestParam(value = "issue_id", required=false, defaultValue="0") Integer issue_id, 
+                @RequestParam(value = "issue_in_work", required=false, defaultValue="0") Integer issue_in_work, 
                 @RequestParam(value = "issue_subject", required=false, defaultValue="") String issue_subject, 
                 @RequestParam(value = "issue_timer_value", required=false, defaultValue="0") double issue_timer_value, 
                 @RequestParam(value = "lock_status", required=true) Integer lock_status){

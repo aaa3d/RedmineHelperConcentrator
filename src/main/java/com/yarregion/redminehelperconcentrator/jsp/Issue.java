@@ -41,6 +41,9 @@ public class Issue {
             @Getter @Setter
             Calendar last_timer_tm;
             
+            @Getter @Setter
+            int in_work=0;
+            
             public String timer_value_readable(){
                 //timer_value - hours... need hours minutes seconds
                 int hours = (int) timer_value;
@@ -54,9 +57,9 @@ public class Issue {
             
             public String getStatus_class(){
                    String status_class;
-                   Calendar timeout_date = Calendar.getInstance();
-                   timeout_date.add(Calendar.MINUTE, -1);
-                   if (last_timer_tm.after(timeout_date)){
+                   //Calendar timeout_date = Calendar.getInstance();
+                   //timeout_date.add(Calendar.MINUTE, -1);
+                   if (in_work==1){
                        status_class = "status_active";
 
                    }
