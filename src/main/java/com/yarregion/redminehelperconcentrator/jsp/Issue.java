@@ -44,7 +44,7 @@ public class Issue {
             
             @Getter @Setter
             @Column(nullable=true)
-            int in_work=0;
+            Integer in_work=0;
             
             public String timer_value_readable(){
                 //timer_value - hours... need hours minutes seconds
