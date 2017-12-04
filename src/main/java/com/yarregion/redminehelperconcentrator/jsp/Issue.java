@@ -58,15 +58,13 @@ public class Issue {
             }
             
             public String getStatus_class(){
-                   String status_class;
+                   String status_class="";
                    //Calendar timeout_date = Calendar.getInstance();
                    //timeout_date.add(Calendar.MINUTE, -1);
-                   if (in_work==1){
-                       status_class = "status_active";
-
-                   }
+                   if ((in_work==null) || (in_work==0))
+                       status_class = "status_inactive";
                    else
-                       status_class="status_inactive";
+                       status_class = "status_active";
                    
                    return status_class;
             }
